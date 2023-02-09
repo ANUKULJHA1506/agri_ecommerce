@@ -1,29 +1,18 @@
-import 'package:agri_ecommerce/otppage.dart';
-import 'package:agri_ecommerce/sign_up.dart';
+import 'package:agri_ecommerce/main.dart';
 import 'package:flutter/material.dart';
-//import 'package:firebase_core/firebase_core.dart';
-
-//import 'otp_page.dart';
-//import 'package:country_picker/country_picker.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
-//import 'home.dart';
-
-void main() => runApp(MaterialApp(
-        home: MyHomePage(
-      title: 'Sign In',
-    )));
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
+class SignUpPage extends StatefulWidget {
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  _SignUpPageState createState() => _SignUpPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _SignUpPageState extends State<SignUpPage> {
+  final _formKey = GlobalKey<FormState>();
+  late String _name;
+  late String _email;
+  late String _password;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +22,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
             const Padding(
-              padding: EdgeInsets.only(left: 16, top: 60),
+              padding: EdgeInsets.only(left: 16, top: 40),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -47,46 +36,84 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             const Padding(
-              padding: EdgeInsets.only(left: 16, top: 30),
+              padding: EdgeInsets.only(left: 170, top: 32),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "Enter Your Mobile Number",
+                  "Signup Youself!",
                   style: TextStyle(
                       color: Color(0xffC8CACB),
                       fontFamily: 'Metropolis',
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.bold),
                 ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(left: 16, top: 12),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "You will receive a 4 digit code to verify next. ",
-                  style: TextStyle(
-                      color: Color(0xff4B5158),
-                      fontFamily: 'Metropolis',
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500),
+            SizedBox(
+              height: 10,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 12.0, left: 16, right: 16),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextFormField(
+                      decoration: InputDecoration(
+                        icon: Icon(Icons.person),
+                        labelText: "Name",
+                      ),
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "Please enter your name";
+                        }
+                        return null;
+                      },
+                      onSaved: (value) => _name = value!,
+                    ),
+                    SizedBox(height: 10.0),
+                    TextFormField(
+                      decoration: InputDecoration(
+                        icon: Icon(Icons.email),
+                        labelText: "Email",
+                      ),
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "Please enter your email address";
+                        }
+                        return null;
+                      },
+                      onSaved: (value) => _email = value!,
+                    ),
+                    SizedBox(height: 10.0),
+                    TextFormField(
+                      decoration: InputDecoration(
+                        icon: Icon(Icons.password),
+                        labelText: "Password",
+                      ),
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "Please enter your password";
+                        }
+                        return null;
+                      },
+                      onSaved: (value) => _password = value!,
+                    ),
+                    /*RaisedButton(
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          _formKey.currentState!.save();
+                          // Use the entered name here
+                        }
+                      },
+                    ),*/
+                  ],
                 ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(left: 16, top: 32),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Mobile Number",
-                  style: TextStyle(
-                      color: Color(0xffC8CACB),
-                      fontFamily: 'Metropolis',
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500),
-                ),
-              ),
+            SizedBox(
+              height: 10,
             ),
             Padding(
               padding: const EdgeInsets.only(top: 12.0, left: 16, right: 16),
@@ -121,10 +148,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: TextButton(
                   onPressed: () {
                     Navigator.push(
-                        context, MaterialPageRoute(builder: (_) => OtpPage()));
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => MyHomePage(title: 'Sign In')));
                   },
                   child: const Text(
-                    'Send OTP',
+                    'Sign Up',
                     style: TextStyle(
                         color: Color(0xff000000),
                         fontFamily: 'Metropolis',
@@ -213,12 +242,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         borderRadius: BorderRadius.circular(5)),
                     child: TextButton(
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => MyHomePage(
-                                      title: 'gtr',
-                                    )));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => SignUpPage()));
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(left: 15),
@@ -260,6 +285,20 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class SignInPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Sign In'),
+      ),
+      body: Center(
+        child: Text('Sign in page'),
       ),
     );
   }
