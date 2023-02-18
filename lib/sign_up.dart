@@ -1,5 +1,8 @@
 import 'package:agri_ecommerce/main.dart';
+import 'package:agri_ecommerce/signup_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -8,13 +11,14 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  final _formKey = GlobalKey<FormState>();
   late String _name;
   late String _email;
   late String _password;
 
   @override
   Widget build(BuildContext context) {
+    final _formKey = GlobalKey<FormState>();
+    final controller = Get.put(SignUpController());
     return Scaffold(
       backgroundColor: const Color(0xff292D32),
       body: SingleChildScrollView(
@@ -60,6 +64,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     TextFormField(
+                      controller: controller.name,
                       decoration: InputDecoration(
                         icon: Icon(Icons.person),
                         labelText: "Name",
@@ -74,6 +79,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     SizedBox(height: 10.0),
                     TextFormField(
+                      controller: controller.email,
                       decoration: InputDecoration(
                         icon: Icon(Icons.email),
                         labelText: "Email",
@@ -88,6 +94,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     SizedBox(height: 10.0),
                     TextFormField(
+                      controller: controller.password,
                       decoration: InputDecoration(
                         icon: Icon(Icons.password),
                         labelText: "Password",
@@ -100,14 +107,18 @@ class _SignUpPageState extends State<SignUpPage> {
                       },
                       onSaved: (value) => _password = value!,
                     ),
-                    /*RaisedButton(
+                    RaisedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          _formKey.currentState!.save();
+                          SignUpController.instance.registerUser(
+                              controller.email.text.trim(),
+                              controller.password.text.trim());
+                          SignUpController.instance.phoneAuthentication(
+                              controller.phoneNo.text.trim());
                           // Use the entered name here
                         }
                       },
-                    ),*/
+                    ),
                   ],
                 ),
               ),
@@ -118,6 +129,7 @@ class _SignUpPageState extends State<SignUpPage> {
             Padding(
               padding: const EdgeInsets.only(top: 12.0, left: 16, right: 16),
               child: IntlPhoneField(
+                controller: controller.phoneNo,
                 showCountryFlag: true,
                 initialCountryCode: 'INDIA',
                 decoration: const InputDecoration(
@@ -279,6 +291,40 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                       ),
                     ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const Text(
+                  'Already have an account?',
+                  style: TextStyle(
+                      color: Color(0xffC8CACB),
+                      fontFamily: 'Metropolis',
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500),
+                ),
+                const Padding(padding: EdgeInsets.only(left: 8)),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => MyHomePage(title: 'home')),
+                    );
+                  },
+                  child: const Text(
+                    'SignIn',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'Metropolis',
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
               ],

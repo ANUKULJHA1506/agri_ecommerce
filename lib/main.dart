@@ -1,18 +1,21 @@
+import 'package:agri_ecommerce/authentication_repo.dart';
 import 'package:agri_ecommerce/otppage.dart';
-import 'package:agri_ecommerce/sign_up.dart';
+import 'package:agri_ecommerce/signup_controller.dart';
+import 'package:agri_ecommerce/splash_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-//import 'package:firebase_core/firebase_core.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 //import 'otp_page.dart';
 //import 'package:country_picker/country_picker.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
-//import 'home.dart';
-
-void main() => runApp(MaterialApp(
-        home: MyHomePage(
-      title: 'Sign In',
-    )));
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp().then((value) => Get.put(AuthenticationRepository()));
+  runApp(MaterialApp(home: Splash()));
+}
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -26,8 +29,9 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SignUpController());
     return Scaffold(
-      backgroundColor: const Color(0xff292D32),
+      backgroundColor: Color(0xff292D32),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -91,6 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Padding(
               padding: const EdgeInsets.only(top: 12.0, left: 16, right: 16),
               child: IntlPhoneField(
+                controller: controller.phoneNo,
                 showCountryFlag: true,
                 initialCountryCode: 'INDIA',
                 decoration: const InputDecoration(
@@ -120,8 +125,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     borderRadius: BorderRadius.circular(25)),
                 child: TextButton(
                   onPressed: () {
-                    Navigator.push(
-                        context, MaterialPageRoute(builder: (_) => OtpPage()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => const OtpPage()));
                   },
                   child: const Text(
                     'Send OTP',
@@ -162,7 +167,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: TextButton(
                       onPressed: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => SignUpPage()));
+                            MaterialPageRoute(builder: (_) => const OtpPage()));
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(left: 15),
@@ -213,12 +218,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         borderRadius: BorderRadius.circular(5)),
                     child: TextButton(
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => MyHomePage(
-                                      title: 'gtr',
-                                    )));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => const OtpPage()));
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(left: 15),

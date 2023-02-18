@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "452059419674",
+    "project_id": "agri-ecommerce-c9184",
+    "storage_bucket": "agri-ecommerce-c9184.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:452059419674:android:94cd93cfec336bbd0e2da3",
+        "android_client_info": {
+          "package_name": "com.example.agri_ecommerce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "452059419674-pshgfguq13imn3578rbqdp1gklu3r3h6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB95wDsWNCGuKnU6B6BLUJtCX4-wYlxfvI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "452059419674-pshgfguq13imn3578rbqdp1gklu3r3h6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
