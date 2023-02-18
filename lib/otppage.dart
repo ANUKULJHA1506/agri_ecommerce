@@ -1,6 +1,9 @@
 import 'dart:ffi';
 
+<<<<<<< HEAD
 import 'package:agri_ecommerce/homepage.dart';
+=======
+>>>>>>> github/master
 import 'package:agri_ecommerce/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -99,7 +102,11 @@ class _OtpPageState extends State<OtpPage> {
                 child: TextButton(
                   onPressed: () {
                     Navigator.push(
+<<<<<<< HEAD
                         context, MaterialPageRoute(builder: (_) => const home_page()));
+=======
+                        context, MaterialPageRoute(builder: (_) => const MyHomePage(title: 'hero')));
+>>>>>>> github/master
                   },
                   child: const Text(
                     'Verify',
