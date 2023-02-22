@@ -213,7 +213,7 @@ class _home_pageState extends State<home_page> {
     iconSize: 24,
     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
     duration: Duration(milliseconds: 400),
-    tabBackgroundColor: Colors.grey[100]!,
+    tabBackgroundColor: Color(0xffA9DFD8),
     color: Colors.grey[100]!,
     tabs: const [
     GButton(
