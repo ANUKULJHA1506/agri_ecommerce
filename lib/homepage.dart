@@ -2,9 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:flutter/rendering.dart';
+import 'package:line_icons/line_icons.dart';
 
 
+
+// ignore: camel_case_types
 class home_page extends StatefulWidget {
   const home_page({Key? key}) : super(key: key);
   @override
@@ -16,7 +20,7 @@ class home_page extends StatefulWidget {
 
 class _home_pageState extends State<home_page> {
 
-    PageController? pageController;
+   late PageController pageController;
   final ScrollController _scrollController = ScrollController();
   int pageNo = 0;
 
@@ -27,7 +31,7 @@ class _home_pageState extends State<home_page> {
       if (pageNo == 4) {
         pageNo = 0;
       }
-      pageController?.animateToPage(
+      pageController.animateToPage(
         pageNo,
         duration: const Duration(seconds: 1),
         curve: Curves.easeInOutCirc,
@@ -58,7 +62,7 @@ class _home_pageState extends State<home_page> {
 
   @override
   void dispose() {
-    pageController?.dispose();
+    pageController.dispose();
     super.dispose();
   }
   bool showBtmAppBr = true;
@@ -106,8 +110,8 @@ class _home_pageState extends State<home_page> {
           SliverList(
             delegate: SliverChildListDelegate([
               SizedBox(
-                height: 195,
-                width: 380,
+                height: 210,
+                width: 300,
                 child: PageView.builder(
                   controller: pageController,
                   onPageChanged: (index) {
@@ -116,7 +120,7 @@ class _home_pageState extends State<home_page> {
                   },
                   itemBuilder: (_, index) {
                     return AnimatedBuilder(
-                     // animation: pageController,
+                      animation: pageController,
                       builder: (ctx, child) {
                         return child!;
                       },
@@ -138,13 +142,14 @@ class _home_pageState extends State<home_page> {
                         },
                         child: Container(
                           margin: const EdgeInsets.only(
-                              right: 8, left: 8, top: 24, bottom: 12),
+                              right: 8, left: 8, top: 5, bottom: 12),
                           decoration: BoxDecoration(
+                            color: Color(0xffA9DFD8),
                             image: const DecorationImage(
                                 image: AssetImage("assets/mask_group.png"),
                                 fit: BoxFit.cover),
 
-                            borderRadius: BorderRadius.circular(10.0),
+                            borderRadius: BorderRadius.circular(25.0),
                             //color: const Color(0xffFF6933),
                           ),
                         ),
@@ -171,7 +176,7 @@ class _home_pageState extends State<home_page> {
                         Icons.circle,
                         size: 10.0,
                         color: pageNo == index
-                            ? const Color(0xffff6933)
+                            ? const Color(0xffA9DFD8)
                             : const Color(0xff8f9586),
                       ),
                     ),
@@ -180,13 +185,57 @@ class _home_pageState extends State<home_page> {
               ),
               Container(
                 height: 1000,
-                color: Colors.pink,
+                color: Color(0xff292D32),
 
               ),
             ]),
           ),
         ],
       ),
+      bottomNavigationBar: Container(
+      decoration: BoxDecoration(
+      color: Color(0xff292D32),
+      boxShadow: [
+        BoxShadow(
+          blurRadius: 20,
+          color: Colors.black.withOpacity(.1),
+        )
+      ],
+    ),
+    child: SafeArea(
+    child: Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
+    child: GNav(
+    rippleColor: Colors.grey[300]!,
+    hoverColor: Colors.grey[300]!,
+    gap: 8,
+    activeColor: Colors.black,
+    iconSize: 24,
+    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+    duration: Duration(milliseconds: 400),
+    tabBackgroundColor: Colors.grey[100]!,
+    color: Colors.grey[100]!,
+    tabs: const [
+    GButton(
+    icon: LineIcons.home,
+    text: 'Home',
+    ),
+    GButton(
+    icon: LineIcons.amazonPay,
+    text: 'Payment',
+    ),
+    GButton(
+    icon: LineIcons.percentage,
+    text: 'Cashback',
+    ),
+    GButton(
+    icon: LineIcons.user,
+    text: 'Profile',
+    ),
+    ],
+
+    ),
+    ),))
     );
   }
 }
