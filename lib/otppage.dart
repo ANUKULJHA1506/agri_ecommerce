@@ -1,6 +1,5 @@
 import 'dart:ffi';
 
-
 import 'package:agri_ecommerce/homepage.dart';
 
 import 'package:agri_ecommerce/main.dart';
@@ -21,8 +20,9 @@ class _OtpPageState extends State<OtpPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xff292D32),
-      appBar: AppBar(elevation: 0,
-        backgroundColor:  Color(0xff292D32),
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Color(0xff292D32),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -62,7 +62,10 @@ class _OtpPageState extends State<OtpPage> {
             Row(
               children: const [
                 Padding(
-                  padding: EdgeInsets.only(left: 76, top: 55,),
+                  padding: EdgeInsets.only(
+                    left: 76,
+                    top: 55,
+                  ),
                   child: Align(
                     alignment: Alignment.center,
                     child: Text(
@@ -74,8 +77,9 @@ class _OtpPageState extends State<OtpPage> {
                           fontWeight: FontWeight.w500),
                     ),
                   ),
-                ),Padding(
-                  padding: EdgeInsets.only( top: 55,right: 16),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 55, right: 16),
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
@@ -91,7 +95,7 @@ class _OtpPageState extends State<OtpPage> {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 20,left: 16,right: 16),
+              padding: const EdgeInsets.only(top: 20, left: 16, right: 16),
               child: Container(
                 height: 50,
                 width: 380,
@@ -100,8 +104,8 @@ class _OtpPageState extends State<OtpPage> {
                     borderRadius: BorderRadius.circular(25)),
                 child: TextButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => const home_page()));
-
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => const home_page()));
                   },
                   child: const Text(
                     'Verify',
@@ -133,108 +137,119 @@ class _OtpformState extends State<Otpform> {
   Widget build(BuildContext context) {
     return Form(
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            SizedBox(
-              width: 60,
-              child: TextFormField( maxLength: 1,onChanged: (value){
-                if(value.length == 1) {
-                  FocusScope.of(context).nextFocus();
-                }
-              },
-                maxLengthEnforcement: MaxLengthEnforcement.enforced,
-                keyboardType: TextInputType.number,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                    fontFamily: 'Metropolis',
-                    fontWeight: FontWeight.w600,
-                    fontSize: 18),
-                decoration: const InputDecoration(counter: Offstage(),
-                  contentPadding:
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        SizedBox(
+          width: 60,
+          child: TextFormField(
+            maxLength: 1,
+            onChanged: (value) {
+              if (value.length == 1) {
+                FocusScope.of(context).nextFocus();
+              }
+            },
+            maxLengthEnforcement: MaxLengthEnforcement.enforced,
+            keyboardType: TextInputType.number,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+                fontFamily: 'Metropolis',
+                fontWeight: FontWeight.w600,
+                fontSize: 18),
+            decoration: const InputDecoration(
+              counter: Offstage(),
+              contentPadding:
                   EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                    borderSide: BorderSide(color: Color(0xff8f95a6)),
-                  ),
-                ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                borderSide: BorderSide(color: Color(0xff8f95a6)),
               ),
             ),
-            SizedBox(
-              width: 60,
-              child: TextFormField(maxLength: 1,onChanged: (value){
-                if(value.length == 1) {
-                  FocusScope.of(context).nextFocus();
-                }
-              },
-                maxLengthEnforcement: MaxLengthEnforcement.enforced,
-                keyboardType: TextInputType.number,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                    fontFamily: 'Metropolis',
-                    fontWeight: FontWeight.w600,
-                    fontSize: 18),
-                decoration: const InputDecoration(counter: Offstage(),
-                  contentPadding:
+          ),
+        ),
+        SizedBox(
+          width: 60,
+          child: TextFormField(
+            maxLength: 1,
+            onChanged: (value) {
+              if (value.length == 1) {
+                FocusScope.of(context).nextFocus();
+              }
+            },
+            maxLengthEnforcement: MaxLengthEnforcement.enforced,
+            keyboardType: TextInputType.number,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+                fontFamily: 'Metropolis',
+                fontWeight: FontWeight.w600,
+                fontSize: 18),
+            decoration: const InputDecoration(
+              counter: Offstage(),
+              contentPadding:
                   EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                    borderSide: BorderSide(color: Color(0xff8f95a6)),
-                  ),
-                ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                borderSide: BorderSide(color: Color(0xff8f95a6)),
               ),
             ),
-            SizedBox(
-              width: 60,
-              child: TextFormField(maxLength: 1,onChanged: (value){
-                if(value.length == 1) {
-                  FocusScope.of(context).nextFocus();
-                }
-              },
-                maxLengthEnforcement: MaxLengthEnforcement.enforced,
-                keyboardType: TextInputType.number,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                    fontFamily: 'Metropolis',
-                    fontWeight: FontWeight.w600,
-                    fontSize: 18),
-                decoration: const InputDecoration(counter: Offstage(),
-                  contentPadding:
+          ),
+        ),
+        SizedBox(
+          width: 60,
+          child: TextFormField(
+            maxLength: 1,
+            onChanged: (value) {
+              if (value.length == 1) {
+                FocusScope.of(context).nextFocus();
+              }
+            },
+            maxLengthEnforcement: MaxLengthEnforcement.enforced,
+            keyboardType: TextInputType.number,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+                fontFamily: 'Metropolis',
+                fontWeight: FontWeight.w600,
+                fontSize: 18),
+            decoration: const InputDecoration(
+              counter: Offstage(),
+              contentPadding:
                   EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                    borderSide: BorderSide(color: Color(0xff8f95a6)),
-                  ),
-                ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                borderSide: BorderSide(color: Color(0xff8f95a6)),
               ),
             ),
-            SizedBox(
-              width: 60,
-              child: TextFormField(maxLength: 1,onChanged: (value){
-                if(value.length == 1) {
-                  FocusScope.of(context).nextFocus();
-                }
-              },
-                maxLengthEnforcement: MaxLengthEnforcement.enforced,
+          ),
+        ),
+        SizedBox(
+          width: 60,
+          child: TextFormField(
+            maxLength: 1,
+            onChanged: (value) {
+              if (value.length == 1) {
+                FocusScope.of(context).nextFocus();
+              }
+            },
+            maxLengthEnforcement: MaxLengthEnforcement.enforced,
 
-                keyboardType: TextInputType.number,
-                textAlign: TextAlign.center,
-                // onChanged: (value) {},
-                style: const TextStyle(
-                    fontFamily: 'Metropolis',
-                    fontWeight: FontWeight.w600,
-                    fontSize: 18),
-                decoration: const InputDecoration(
-                  counter: Offstage(),
-                  contentPadding:
+            keyboardType: TextInputType.number,
+            textAlign: TextAlign.center,
+            // onChanged: (value) {},
+            style: const TextStyle(
+                fontFamily: 'Metropolis',
+                fontWeight: FontWeight.w600,
+                fontSize: 18),
+            decoration: const InputDecoration(
+              counter: Offstage(),
+              contentPadding:
                   EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                    borderSide: BorderSide(color: Color(0xff8f95a6)),
-                  ),
-                ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                borderSide: BorderSide(color: Color(0xff8f95a6)),
               ),
             ),
-          ],
-        ));
+          ),
+        ),
+      ],
+    ));
   }
 }

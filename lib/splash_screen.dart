@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'main.dart';
-//import 'package:animated_splash_screen/animated_splash_screen.dart';
+
 
 class Splash extends StatefulWidget {
   @override
@@ -43,25 +43,6 @@ class _SplashState extends State<Splash> {
               ),
             ),
           ),
-         /* const Center(
-              child: const CircleAvatar(
-            radius: 85,
-            backgroundColor: Colors.white,
-          )),*/
-         /* Center(
-              child: Container(
-            height: 125,
-            width: 130,
-            decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(15)),
-                // shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: AssetImage(
-                    'assets/splash.jpeg',
-                  ),
-                  //fit: BoxFit.cover,
-                )),
-          ))*/
         ],
       ),
     );

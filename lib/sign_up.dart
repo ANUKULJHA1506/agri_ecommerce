@@ -1,8 +1,11 @@
 import 'package:agri_ecommerce/main.dart';
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
 import 'package:intl_phone_field/intl_phone_field.dart';
 
 class SignUpPage extends StatefulWidget {
+  const SignUpPage({Key? key}) : super(key: key);
+
   @override
   _SignUpPageState createState() => _SignUpPageState();
 }
@@ -49,7 +52,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Padding(
@@ -60,7 +63,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     TextFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         icon: Icon(Icons.person),
                         labelText: "Name",
                       ),
@@ -72,9 +75,9 @@ class _SignUpPageState extends State<SignUpPage> {
                       },
                       onSaved: (value) => _name = value!,
                     ),
-                    SizedBox(height: 10.0),
+                    const SizedBox(height: 10.0),
                     TextFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         icon: Icon(Icons.email),
                         labelText: "Email",
                       ),
@@ -86,9 +89,9 @@ class _SignUpPageState extends State<SignUpPage> {
                       },
                       onSaved: (value) => _email = value!,
                     ),
-                    SizedBox(height: 10.0),
+                    const SizedBox(height: 10.0),
                     TextFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         icon: Icon(Icons.password),
                         labelText: "Password",
                       ),
@@ -112,7 +115,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Padding(
@@ -150,7 +153,8 @@ class _SignUpPageState extends State<SignUpPage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (_) => MyHomePage(title: 'Sign In')));
+                            builder: (_) =>
+                                const MyHomePage(title: 'Sign In')));
                   },
                   child: const Text(
                     'Sign Up',
@@ -190,8 +194,10 @@ class _SignUpPageState extends State<SignUpPage> {
                         borderRadius: BorderRadius.circular(5)),
                     child: TextButton(
                       onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => SignUpPage()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => const SignUpPage()));
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(left: 15),
@@ -295,10 +301,10 @@ class SignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sign In'),
+        title: const Text('Sign In'),
       ),
-      body: Center(
-        child: Text('Sign in page'),
+      body: const Center(
+        child: const Text('Sign in page'),
       ),
     );
   }

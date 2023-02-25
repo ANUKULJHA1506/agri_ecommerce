@@ -81,14 +81,19 @@ class _MyHomePageState extends State<MyHomePage> {
                       fontWeight: FontWeight.w500),
                 ),
               ),
-            ),Padding(
-              padding: const EdgeInsets.only(top: 12.0,left: 16,right: 16),
-              child: IntlPhoneField(showCountryFlag:true,initialCountryCode: 'INDIA' ,
-                decoration: const InputDecoration(counter:  Offstage(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 12.0, left: 16, right: 16),
+              child: IntlPhoneField(
+                showCountryFlag: true,
+                initialCountryCode: 'IN',
+                decoration: const InputDecoration(
+                  counter: Offstage(),
                   hintText: 'Enter mobile number',
-                    hintStyle: TextStyle(fontSize: 15.0, color: Color(0xffC8CACB)),
+                  hintStyle:
+                      TextStyle(fontSize: 15.0, color: Color(0xffC8CACB)),
                   border: OutlineInputBorder(
-                    borderSide:  BorderSide(),
+                    borderSide: BorderSide(),
                   ),
                 ),
                 onChanged: (phone) {
@@ -99,9 +104,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
               ),
             ),
-
             Padding(
-              padding: const EdgeInsets.only(top: 20,left: 16,right: 16),
+              padding: const EdgeInsets.only(top: 20, left: 16, right: 16),
               child: Container(
                 height: 50,
                 width: 380,
@@ -110,8 +114,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     borderRadius: BorderRadius.circular(25)),
                 child: TextButton(
                   onPressed: () {
-                    Navigator.push(
-                        context, MaterialPageRoute(builder: (_) => const OtpPage()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => const OtpPage()));
                   },
                   child: const Text(
                     'Send OTP',
@@ -139,7 +143,7 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top:20),
+                  padding: const EdgeInsets.only(top: 20),
                   child: Container(
                     height: 54,
                     width: 164,
@@ -151,27 +155,28 @@ class _MyHomePageState extends State<MyHomePage> {
                         borderRadius: BorderRadius.circular(5)),
                     child: TextButton(
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => const OtpPage()));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => const OtpPage()));
                       },
-                      child: Padding(padding: const EdgeInsets.only(left:15),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 15),
                         child: Row(
-                          children: [Padding(
-                            padding: const EdgeInsets.only(left:15.0),
-                            child: SizedBox(
-                                height: 20,
-                                width: 20,
-                                child: DecoratedBox(
-                                    decoration: BoxDecoration(
-                                        color: const Color(0xffffffff),
-                                        borderRadius: BorderRadius.circular(10)),
-                                    child:  Image.asset(
-                                      'assets/google_icon.png',
-                                      // color: Color(0xff603183),
-                                    ))),
-                          ),
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15.0),
+                              child: SizedBox(
+                                  height: 20,
+                                  width: 20,
+                                  child: DecoratedBox(
+                                      decoration: BoxDecoration(
+                                          color: const Color(0xffffffff),
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      child: Image.asset(
+                                        'assets/google_icon.png',
+                                        // color: Color(0xff603183),
+                                      ))),
+                            ),
                             const Padding(
                               padding: EdgeInsets.only(left: 11.0),
                               child: Text(
@@ -194,34 +199,36 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Container(
                     height: 54,
                     width: 164,
-                    decoration: BoxDecoration(border: Border.all(
-                      color: const Color(0xff8f9586),
-                    ),
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          color: const Color(0xff8f9586),
+                        ),
                         color: const Color(0xffffffff),
                         borderRadius: BorderRadius.circular(5)),
                     child: TextButton(
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => const OtpPage()));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => const OtpPage()));
                       },
-                      child: Padding(padding: const EdgeInsets.only(left:15),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 15),
                         child: Row(
-                          children: [Padding(
-                            padding: const EdgeInsets.only(left:15.0),
-                            child: SizedBox(
-                                height: 20,
-                                width: 20,
-                                child: DecoratedBox(
-                                    decoration: BoxDecoration(
-                                        color: const Color(0xffffffff),
-                                        borderRadius: BorderRadius.circular(10)),
-                                    child:  Image.asset(
-                                      'assets/apple_icon.png',
-                                      // color: Color(0xff603183),
-                                    ))),
-                          ),
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15.0),
+                              child: SizedBox(
+                                  height: 20,
+                                  width: 20,
+                                  child: DecoratedBox(
+                                      decoration: BoxDecoration(
+                                          color: const Color(0xffffffff),
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      child: Image.asset(
+                                        'assets/apple_icon.png',
+                                        // color: Color(0xff603183),
+                                      ))),
+                            ),
                             const Padding(
                               padding: EdgeInsets.only(left: 11.0),
                               child: Text(
@@ -241,7 +248,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
             ),
-
           ],
         ),
       ),

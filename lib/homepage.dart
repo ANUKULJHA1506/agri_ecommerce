@@ -1,9 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
+
+// ignore: depend_on_referenced_packages
+import 'package:google_nav_bar/google_nav_bar.dart' show GButton, GNav;
 import 'package:flutter/rendering.dart';
+// ignore: depend_on_referenced_packages
 import 'package:line_icons/line_icons.dart';
 
 // ignore: camel_case_types
@@ -13,6 +15,7 @@ class home_page extends StatefulWidget {
   State<home_page> createState() => _home_pageState();
 }
 
+// ignore: camel_case_types
 class _home_pageState extends State<home_page> {
   late PageController pageController;
   final ScrollController _scrollController = ScrollController();
@@ -62,11 +65,11 @@ class _home_pageState extends State<home_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0xff292D32),
+        backgroundColor: const Color(0xff292D32),
         body: CustomScrollView(
           slivers: [
             SliverAppBar(
-              backgroundColor: Color(0xff292D32),
+              backgroundColor: const Color(0xff292D32),
               expandedHeight: 110,
               floating: true,
               pinned: true,
@@ -81,7 +84,7 @@ class _home_pageState extends State<home_page> {
                 ),
               ],
               bottom: AppBar(
-                backgroundColor: Color(0xff292D32),
+                backgroundColor: const Color(0xff292D32),
                 title: Container(
                   width: double.infinity,
                   height: 40,
@@ -141,9 +144,9 @@ class _home_pageState extends State<home_page> {
                             margin: const EdgeInsets.only(
                                 right: 8, left: 8, top: 5, bottom: 12),
                             decoration: BoxDecoration(
-                              color: Color(0xffA9DFD8),
+                              color: const Color(0xffA9DFD8),
                               image: const DecorationImage(
-                                  image: AssetImage("assets/mask_group.png"),
+                                  image: AssetImage("assets/image_banner.png"),
                                   fit: BoxFit.cover),
 
                               borderRadius: BorderRadius.circular(25.0),
@@ -182,7 +185,7 @@ class _home_pageState extends State<home_page> {
                 ),
                 Container(
                   height: 1000,
-                  color: Color(0xff292D32),
+                  color: const Color(0xff292D32),
                 ),
               ]),
             ),
@@ -190,7 +193,7 @@ class _home_pageState extends State<home_page> {
         ),
         bottomNavigationBar: Container(
             decoration: BoxDecoration(
-              color: Color(0xff292D32),
+              color: const Color(0xff292D32),
               boxShadow: [
                 BoxShadow(
                   blurRadius: 20,
@@ -210,8 +213,8 @@ class _home_pageState extends State<home_page> {
                   iconSize: 24,
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                  duration: Duration(milliseconds: 400),
-                  tabBackgroundColor: Color(0xffA9DFD8),
+                  duration: const Duration(milliseconds: 400),
+                  tabBackgroundColor: const Color(0xffA9DFD8),
                   color: Colors.grey[100]!,
                   tabs: const [
                     GButton(
