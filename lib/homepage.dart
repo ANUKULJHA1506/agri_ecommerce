@@ -76,7 +76,7 @@ class _home_pageState extends State<home_page> {
               snap: false,
               centerTitle: false,
               automaticallyImplyLeading: false,
-              title: const Text('Agri_Tech'),
+              title: const Text('Gaming_Tech'),
               actions: [
                 IconButton(
                   icon: const Icon(Icons.shopping_cart),
