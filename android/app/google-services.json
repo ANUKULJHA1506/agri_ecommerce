@@ -14,7 +14,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "452059419674-pshgfguq13imn3578rbqdp1gklu3r3h6.apps.googleusercontent.com",
+          "client_id": "452059419674-25rg7flpu5v6s4mpe8dbhbaqid1r5lc9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.agri_ecommerce",
+            "certificate_hash": "10983495fa96d9f61b2f731f5e2afe16a20f568c"
+          }
+        },
+        {
+          "client_id": "452059419674-dllmhnkcfeurps5jojorerm74abasmj5.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,7 +35,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "452059419674-pshgfguq13imn3578rbqdp1gklu3r3h6.apps.googleusercontent.com",
+              "client_id": "452059419674-dllmhnkcfeurps5jojorerm74abasmj5.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

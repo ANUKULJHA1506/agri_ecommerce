@@ -13,9 +13,9 @@ import 'package:get/get_core/src/get_main.dart';
 //import 'package:country_picker/country_picker.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  //Firebase.initializeApp().then((value) => Get.put(AuthenticationRepository()));
+  await Firebase.initializeApp();
   runApp(MaterialApp(debugShowCheckedModeBanner: false, home: Splash()));
 }
 
