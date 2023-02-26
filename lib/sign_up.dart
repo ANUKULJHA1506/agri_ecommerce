@@ -1,5 +1,6 @@
-import 'package:agri_ecommerce/main.dart';
-import 'package:agri_ecommerce/signup_controller.dart';
+import 'homepage.dart';
+import 'main.dart';
+import 'otppage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -18,7 +19,7 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
-    final controller = Get.put(SignUpController());
+    // final controller = Get.put(SignUpController());
     return Scaffold(
       backgroundColor: const Color(0xff292D32),
       body: SingleChildScrollView(
@@ -64,7 +65,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     TextFormField(
-                      controller: controller.name,
+                      //controller: controller.name,
                       decoration: InputDecoration(
                         icon: Icon(Icons.person),
                         labelText: "Name",
@@ -79,7 +80,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     SizedBox(height: 10.0),
                     TextFormField(
-                      controller: controller.email,
+                      //controller: controller.email,
                       decoration: InputDecoration(
                         icon: Icon(Icons.email),
                         labelText: "Email",
@@ -94,7 +95,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     SizedBox(height: 10.0),
                     TextFormField(
-                      controller: controller.password,
+                      //controller: controller.password,
                       decoration: InputDecoration(
                         icon: Icon(Icons.password),
                         labelText: "Password",
@@ -107,18 +108,6 @@ class _SignUpPageState extends State<SignUpPage> {
                       },
                       onSaved: (value) => _password = value!,
                     ),
-                    RaisedButton(
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          SignUpController.instance.registerUser(
-                              controller.email.text.trim(),
-                              controller.password.text.trim());
-                          SignUpController.instance.phoneAuthentication(
-                              controller.phoneNo.text.trim());
-                          // Use the entered name here
-                        }
-                      },
-                    ),
                   ],
                 ),
               ),
@@ -126,10 +115,10 @@ class _SignUpPageState extends State<SignUpPage> {
             SizedBox(
               height: 10,
             ),
-            Padding(
+            /*Padding(
               padding: const EdgeInsets.only(top: 12.0, left: 16, right: 16),
               child: IntlPhoneField(
-                controller: controller.phoneNo,
+                //controller: controller.phoneNo,
                 showCountryFlag: true,
                 initialCountryCode: 'INDIA',
                 decoration: const InputDecoration(
@@ -148,29 +137,40 @@ class _SignUpPageState extends State<SignUpPage> {
                   print('Country changed to: ' + country.name);
                 },
               ),
-            ),
+            ),*/
             Padding(
               padding: const EdgeInsets.only(top: 20, left: 16, right: 16),
-              child: Container(
-                height: 50,
-                width: 380,
-                decoration: BoxDecoration(
-                    color: const Color(0xffA9DFD8),
-                    borderRadius: BorderRadius.circular(25)),
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (_) => MyHomePage(title: 'Sign In')));
-                  },
-                  child: const Text(
-                    'Sign Up',
-                    style: TextStyle(
-                        color: Color(0xff000000),
-                        fontFamily: 'Metropolis',
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold),
+              child: TextButton(
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    //SignUpController.instance.registerUser(
+                    // controller.email.text.trim(),
+                    //controller.password.text.trim());
+                    //SignUpController.instance
+                    //.phoneAuthentication(controller.phoneNo.text.trim());
+                    Get.to(() => OtpPage());
+                    // Use the entered name here
+                  }
+                },
+                child: Container(
+                  height: 50,
+                  width: 380,
+                  decoration: BoxDecoration(
+                      color: const Color(0xffA9DFD8),
+                      borderRadius: BorderRadius.circular(25)),
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => const home_page()));
+                    },
+                    child: const Text(
+                      'Sign Up',
+                      style: TextStyle(
+                          color: Color(0xff000000),
+                          fontFamily: 'Metropolis',
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
               ),
@@ -254,8 +254,10 @@ class _SignUpPageState extends State<SignUpPage> {
                         borderRadius: BorderRadius.circular(5)),
                     child: TextButton(
                       onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => SignUpPage()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => const home_page()));
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(left: 15),
@@ -296,7 +298,7 @@ class _SignUpPageState extends State<SignUpPage> {
               ],
             ),
             const SizedBox(
-              height: 10,
+              height: 40,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

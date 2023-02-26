@@ -1,7 +1,9 @@
-import 'package:agri_ecommerce/authentication_repo.dart';
-import 'package:agri_ecommerce/otppage.dart';
-import 'package:agri_ecommerce/signup_controller.dart';
-import 'package:agri_ecommerce/splash_screen.dart';
+import 'package:country_picker/country_picker.dart';
+
+import 'otppage.dart';
+import 'sign_up.dart';
+
+import 'splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,8 +15,8 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp().then((value) => Get.put(AuthenticationRepository()));
-  runApp(MaterialApp(home: Splash()));
+  //Firebase.initializeApp().then((value) => Get.put(AuthenticationRepository()));
+  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: Splash()));
 }
 
 class MyHomePage extends StatefulWidget {
@@ -27,11 +29,29 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final TextEditingController phoneController = TextEditingController();
+  Country selectedCountry = Country(
+    phoneCode: "91",
+    countryCode: "IN",
+    e164Sc: 0,
+    geographic: true,
+    level: 1,
+    name: "India",
+    example: "India",
+    displayName: "India",
+    displayNameNoCountryCode: "IN",
+    e164Key: "",
+  );
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(SignUpController());
+    phoneController.selection = TextSelection.fromPosition(
+      TextPosition(
+        offset: phoneController.text.length,
+      ),
+    );
+    // final controller = Get.put(SignUpController());
     return Scaffold(
-      backgroundColor: Color(0xff292D32),
+      backgroundColor: const Color(0xff292D32),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -95,24 +115,75 @@ class _MyHomePageState extends State<MyHomePage> {
             Padding(
               padding: const EdgeInsets.only(top: 12.0, left: 16, right: 16),
               child: IntlPhoneField(
-                controller: controller.phoneNo,
-                showCountryFlag: true,
-                initialCountryCode: 'INDIA',
-                decoration: const InputDecoration(
-                  counter: Offstage(),
+                cursorColor: Colors.white,
+                controller: phoneController,
+                onChanged: (value) {
+                  setState(() {
+                    phoneController.text = value as String;
+                  });
+                },
+                /*showCountryFlag: true,
+                initialCountryCode: 'INDIA',*/
+                decoration: InputDecoration(
+                  counter: const Offstage(),
                   hintText: 'Enter mobile number',
                   hintStyle:
-                      TextStyle(fontSize: 15.0, color: Color(0xffC8CACB)),
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(),
+                      const TextStyle(fontSize: 15.0, color: Color(0xffC8CACB)),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(color: Colors.white),
                   ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(color: Colors.white),
+                  ),
+                  prefixIcon: Container(
+                    padding: const EdgeInsets.all(8.0),
+                    child: InkWell(
+                      onTap: () {
+                        showCountryPicker(
+                            context: context,
+                            countryListTheme: const CountryListThemeData(
+                              bottomSheetHeight: 500,
+                            ),
+                            onSelect: (value) {
+                              setState(() {
+                                selectedCountry = value;
+                              });
+                            });
+                      },
+                      child: Text(
+                        "${selectedCountry.flagEmoji} + ${selectedCountry.phoneCode}",
+                        style: const TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  suffixIcon: phoneController.text.length > 9
+                      ? Container(
+                          height: 30,
+                          width: 30,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color(0xffA9DFD8),
+                          ),
+                          child: const Icon(
+                            Icons.done,
+                            color: Colors.white,
+                            size: 20,
+                          ),
+                        )
+                      : null,
                 ),
-                onChanged: (phone) {
+                /*onChanged: (phone) {
                   print(phone.completeNumber);
-                },
-                onCountryChanged: (country) {
-                  print('Country changed to: ' + country.name);
-                },
+                },*/
+                /*onCountryChanged: (country) {
+                  print('Country changed to: ${country.name}');
+                },*/
               ),
             ),
             Padding(
@@ -125,8 +196,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     borderRadius: BorderRadius.circular(25)),
                 child: TextButton(
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => const OtpPage()));
+                    Navigator.push(
+                        context, MaterialPageRoute(builder: (_) => OtpPage()));
                   },
                   child: const Text(
                     'Send OTP',
@@ -167,7 +238,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: TextButton(
                       onPressed: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => const OtpPage()));
+                            MaterialPageRoute(builder: (_) => OtpPage()));
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(left: 15),
@@ -219,7 +290,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: TextButton(
                       onPressed: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => const OtpPage()));
+                            MaterialPageRoute(builder: (_) => OtpPage()));
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(left: 15),
@@ -258,6 +329,42 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
               ],
+            ),
+            SizedBox(
+              height: 40,
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (_) => SignUpPage()));
+              },
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Don\'t have an account?',
+                      style: TextStyle(
+                        color: Color(0xffC8CACB),
+                        fontFamily: 'Metropolis',
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    SizedBox(width: 8),
+                    Text(
+                      'Sign up',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontFamily: 'Metropolis',
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),

@@ -1,13 +1,13 @@
-import 'dart:ffi';
-
+import 'package:agri_ecommerce/homepage.dart';
 import 'package:agri_ecommerce/main.dart';
+import 'package:agri_ecommerce/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 //import 'package:pinput/pinput.dart';
 //import 'onboardpage.dart';
 
 class OtpPage extends StatefulWidget {
-  const OtpPage({Key? key}) : super(key: key);
+  final otpController = TextEditingController();
 
   @override
   State<OtpPage> createState() => _OtpPageState();
@@ -102,10 +102,8 @@ class _OtpPageState extends State<OtpPage> {
                     borderRadius: BorderRadius.circular(25)),
                 child: TextButton(
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (_) => const MyHomePage(title: 'hero')));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => SignUpPage()));
                   },
                   child: const Text(
                     'Verify',

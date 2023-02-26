@@ -1,3 +1,4 @@
+import 'package:agri_ecommerce/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'main.dart';
@@ -12,10 +13,8 @@ class _SplashState extends State<Splash> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 5), () {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => const MyHomePage(title: 'title')));
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => const WelcomeScreen()));
     });
 
     super.initState();
